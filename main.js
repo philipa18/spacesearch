@@ -1,13 +1,23 @@
 const url = 'https://images-api.nasa.gov/search?q=';
 const inputField = document.querySelector('#inquiry');
+const dateField = document.querySelector('#yearStart');
 const button = document.getElementById('submit');
+var currentYear=new Date().getFullYear();
+// Dynamically populates select elements with valid years
+for (var i = 1940; i<=currentYear; i++){
+  var opt = document.createElement('option');
+  opt.value = i;
+  opt.innerHTML = i;
+  dateField.appendChild(opt);
+}
 let results = [];
 let rows = [];
 let table = document.querySelector('table');
 button.addEventListener("click", search);
 function search() {
   const query = inputField.value;
-  const endpoint = url + query + '&media_type=image';
+  const yearStart = dateField.options[dateField.selectedIndex].text;
+  const endpoint = url + query + '&media_type=image&year_start='+yearStart;
 
   const xhr = new XMLHttpRequest();
   xhr.responseType = 'json';
