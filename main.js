@@ -2,9 +2,9 @@ const url = 'https://images-api.nasa.gov/search?q=';
 const inputField = document.querySelector('#inquiry');
 const dateField = document.querySelector('#yearStart');
 const button = document.getElementById('submit');
-var currentYear=new Date().getFullYear();
+var currentYear = new Date().getFullYear();
 // Dynamically populates select elements with valid years
-for (var i = 1940; i<=currentYear; i++){
+for (var i = 1940; i <= currentYear; i++){
   var opt = document.createElement('option');
   opt.value = i;
   opt.innerHTML = i;
